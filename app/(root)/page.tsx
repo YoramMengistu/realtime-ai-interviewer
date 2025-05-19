@@ -26,14 +26,13 @@ const Home = async () => {
         <div className="flex flex-col gap-6 max-w-lg">
           <h2>Get Interview-Ready with AI-Powered Practice & Feedback</h2>
           <p className="text-lg">
-            {" "}
             Practice real interview questions & get instant feedback
           </p>
+
           <Button asChild className="btn-primary max-sm:w-full">
             <Link href="/interview">Start an Interview</Link>
           </Button>
         </div>
-
         <Image
           src="/robot.png"
           alt="robot-dude"
