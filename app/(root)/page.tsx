@@ -1,17 +1,18 @@
-import InterviewCard from "@/components/InterviewCard";
+import Link from "next/link";
+import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
+import InterviewCard from "@/components/InterviewCard";
+
 import { getCurrentUser } from "@/lib/actions/auth.actions";
 import {
-  getInterviewById,
   getInterviewsByUserId,
   getLatestInterviews,
 } from "@/lib/actions/general.action";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
 
-const Home = async () => {
+async function Home() {
   const user = await getCurrentUser();
+
   const [userInterviews, allInterview] = await Promise.all([
     getInterviewsByUserId(user?.id!),
     getLatestInterviews({ userId: user?.id! }),
@@ -33,9 +34,10 @@ const Home = async () => {
             <Link href="/interview">Start an Interview</Link>
           </Button>
         </div>
+
         <Image
           src="/robot.png"
-          alt="robot-dude"
+          alt="robo-dude"
           width={400}
           height={400}
           className="max-sm:hidden"
@@ -43,7 +45,8 @@ const Home = async () => {
       </section>
 
       <section className="flex flex-col gap-6 mt-8">
-        <h2>Your Past Interviews</h2>
+        <h2>Your Interviews</h2>
+
         <div className="interviews-section">
           {hasPastInterviews ? (
             userInterviews?.map((interview) => (
@@ -64,7 +67,7 @@ const Home = async () => {
       </section>
 
       <section className="flex flex-col gap-6 mt-8">
-        <h2>Take an Interview</h2>
+        <h2>Take Interviews</h2>
 
         <div className="interviews-section">
           {hasUpcomingInterviews ? (
@@ -86,6 +89,6 @@ const Home = async () => {
       </section>
     </>
   );
-};
+}
 
 export default Home;
