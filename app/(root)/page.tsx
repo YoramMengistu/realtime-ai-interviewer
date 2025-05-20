@@ -9,6 +9,7 @@ import {
   getInterviewsByUserId,
   getLatestInterviews,
 } from "@/lib/actions/general.action";
+import { dummyInterviews } from "@/constants";
 
 async function Home() {
   const user = await getCurrentUser();
@@ -37,7 +38,7 @@ async function Home() {
 
         <Image
           src="/robot.png"
-          alt="robo-dude"
+          alt="robot-dude"
           width={400}
           height={400}
           className="max-sm:hidden"
@@ -85,6 +86,24 @@ async function Home() {
           ) : (
             <p>There are no interviews available</p>
           )}
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-6 mt-8">
+        <h2>Practice Interviews</h2>
+
+        <div className="interviews-section">
+          {dummyInterviews.map((interview) => (
+            <InterviewCard
+              key={interview.id}
+              userId={interview.userId}
+              interviewId={interview.id}
+              role={interview.role}
+              type={interview.type}
+              techstack={interview.techstack}
+              createdAt={interview.createdAt}
+            />
+          ))}
         </div>
       </section>
     </>
