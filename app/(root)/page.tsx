@@ -88,24 +88,6 @@ async function Home() {
           )}
         </div>
       </section>
-
-      <section className="flex flex-col gap-6 mt-8">
-        <h2>Practice Interviews</h2>
-
-        <div className="interviews-section">
-          {dummyInterviews.map((interview) => (
-            <InterviewCard
-              key={interview.id}
-              userId={interview.userId}
-              interviewId={interview.id}
-              role={interview.role}
-              type={interview.type}
-              techstack={interview.techstack}
-              createdAt={interview.createdAt}
-            />
-          ))}
-        </div>
-      </section>
     </>
   );
 }
